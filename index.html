@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function main() {
+            var num = parseInt(document.getElementById("num").value);
+            var resp = document.getElementById("resposta");
+ 
+            if(document.getElementById("CtoF").checked==true)
+                resp.innerHTML = ctof(num);
+        }
+        function ctof(x) {
+            return (1.8*x + 32);
+        }
+
+    </script>
+ </head>
+ <body>
+    <h1>Conversor de Temperatura(Celsius para Fahrenheit)</h1>
+    <input type="radio" name="converter" id="CtoF"/>Celsius para Fahrenheit <br />
+    Converter temperatura :<input id="num" type="number"> <br />
+    <button onclick="main()">Calcular</button><br />
+    Convertido : <div id="resposta" style='display:inline'></div><br />
+</html>
