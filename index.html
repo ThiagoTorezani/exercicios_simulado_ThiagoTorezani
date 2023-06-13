@@ -1,28 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
- <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script>
-        function main() {
-            var num = parseInt(document.getElementById("num").value);
-            var resp = document.getElementById("resposta");
- 
-            if(document.getElementById("CtoF").checked==true)
-                resp.innerHTML = ctof(num);
-        }
-        function ctof(x) {
-            return (1.8*x + 32);
-        }
+<html>
+<head>
+  <title>Validação de Senha</title>
+  <script>
+    function verificarSenha() {
+      var senha = document.getElementById("senha").value;
 
-    </script>
- </head>
- <body>
-    <h1>Conversor de Temperatura(Celsius para Fahrenheit)</h1>
-    <input type="radio" name="converter" id="CtoF"/>Celsius para Fahrenheit <br />
-    Converter temperatura :<input id="num" type="number"> <br />
-    <button onclick="main()">Calcular</button><br />
-    Convertido : <div id="resposta" style='display:inline'></div><br />
+      // Verificar o comprimento mínimo da senha
+      if (senha.length < 8) {
+        alert("A senha deve ter pelo menos 8 caracteres.");
+        return false;
+      }
+
+      // Verificar se há pelo menos uma letra maiúscula
+      if (!/[A-Z]/.test(senha)) {
+        alert("A senha deve conter pelo menos uma letra maiúscula.");
+        return false;
+      }
+
+      // Verificar se há pelo menos uma letra minúscula
+      if (!/[a-z]/.test(senha)) {
+        alert("A senha deve conter pelo menos uma letra minúscula.");
+        return false;
+      }
+
+      // Verificar se há pelo menos um número
+      if (!/[0-9]/.test(senha)) {
+        alert("A senha deve conter pelo menos um número.");
+        return false;
+      }
+
+      // A senha atende a todos os critérios
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <form onsubmit="return verificarSenha()">
+    <label for="senha">Senha:</label>
+    <input type="password" id="senha" name="senha">
+    <input type="submit" value="Enviar">
+  </form>
+</body>
 </html>
